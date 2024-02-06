@@ -1,0 +1,15 @@
+<ion-app>
+  <ion-content [fullscreen]="true">
+
+    <div class="main">  	
+      <ion-card class="login">
+        <form>
+          <ion-input type="text" name="username" required placeholder="Username" [(ngModel)]="username"></ion-input>
+          <ion-input type="password" name="password" required placeholder="Password" [(ngModel)]="password"></ion-input>
+          <ion-button (click)="login()">Login</ion-button>
+        </form>
+      </ion-card>
+    </div>
+  </ion-content>
+</ion-app>
+

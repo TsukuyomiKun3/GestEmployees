@@ -1,0 +1,74 @@
+ion-content {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    width: 100%;
+}
+
+.main {
+    width: 350px;
+    max-width: 80%;
+    min-height: 40%;
+    max-height: 50%;
+    background: #302b63;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to top, #0f0c29, #302b63, #24243e);
+
+}
+
+ion-input {
+    max-width: 100%; /* Adjusted width */
+    max-height: 15%; /* Adjusted height */
+    background: #e0dede;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.placeholder {
+    color: #000;
+}
+
+
+ion-button {
+    min-width: 100%;
+    max-height: 5%;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #573b8a;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+ion-button:hover {
+    background: #6d44b8;
+}
+
+.login {
+    min-width: 80%; /* Adjusted width */
+    min-height: 80%; /* Adjusted height */
+    padding: 20px; /* Added padding */
+    background: #eee;
+    border-radius: 10px; /* Adjusted border-radius */
+    transition: .8s ease-in-out;
+}
+
