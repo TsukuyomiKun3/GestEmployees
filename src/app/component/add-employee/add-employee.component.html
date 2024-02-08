@@ -1,0 +1,32 @@
+<!-- The Modal -->
+<div class="modal-englobe">
+  <div class="modal" id="modal-add">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <form id="addPersonForm" (ngSubmit)="onSubmit()">
+            <label for="firstName">Prénom :</label>
+            <div class="form-group">
+              <input type="text" class="form-control" id="firstName" name="first_name" [(ngModel)]="firstname" required>
+            </div>
+            <label for="lastName">Nom :</label>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="lastName" name="last_name" [(ngModel)]="lastname" required>
+            </div>
+            <label for="email">Email :</label>
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close()">Fermer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

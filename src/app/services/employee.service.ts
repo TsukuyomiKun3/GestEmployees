@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { UtilsService } from "./utils.service";
 import { Injectable } from "@angular/core";
-import { Employee } from "../models/employee.model";
+import { Employee } from "../model/employee.model";
 
 
 @Injectable({
@@ -16,10 +16,16 @@ export class EmployeeService {
         return this.http.get<Employee[]>(url);
     }
 
-    addEmployee(employee: Employee) {
+    addEmployee(first_name: string, last_name: string, email: string) {
         let url = `${this.utilsService.getEndPoint().apiUrl}/employees`;
 
-        return this.http.post(url, employee);
+        let body = {
+            first_name: first_name,
+            last_name: last_name,
+            email: email
+        };
+
+        return this.http.post(url, body);
     }
 
     deleteEmployee(id: number) {

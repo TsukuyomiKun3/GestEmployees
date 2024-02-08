@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { HomePageRoutingModule } from './home-routing.module';
+import { AddEmployeeComponent } from 'src/app/component/add-employee/add-employee.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AddEmployeeComponent
   ],
   declarations: [HomePage]
 })

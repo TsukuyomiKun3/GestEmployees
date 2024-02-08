@@ -1,6 +1,5 @@
 <ion-app>
   <ion-content [fullscreen]="true">
-    <ion-card>
       <ion-card-header>
         <div class="header-content">
           <ion-card-title>
@@ -12,16 +11,23 @@
           </ion-label>
         </div>
       </ion-card-header>
-      <ion-button class="button-add">
+
+      <ion-button class="button-add" (click)="toggleModalAdd()">
         + Add an employee
       </ion-button>
+
+    <ion-card>
       <ion-list>
         <ion-item *ngFor="let employee of employees" class="employee">
           <ion-label>
-            <h2>{{ employee.firstname}}</h2><h2>{{ employee.lastname}}</h2>
+            <h2>{{ employee.firstname}}</h2><h2>{{ employee.lastname}}</h2><h2>{{ employee.email}}</h2>
           </ion-label>
         </ion-item>
       </ion-list>
     </ion-card>
+
+    <div class="div-modal-add" [hidden]="!showModalAdd">
+      <app-add-employee (refreshEmployees)="refreshEmployees()" (closeModal)="toggleModalAdd()"></app-add-employee>
+    </div>
   </ion-content>
 </ion-app>

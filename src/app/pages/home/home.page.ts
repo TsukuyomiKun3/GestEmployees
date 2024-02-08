@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
-import { Employee } from 'src/app/models/employee.model';
+import { Employee } from 'src/app/model/employee.model';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +10,17 @@ import { Employee } from 'src/app/models/employee.model';
 export class HomePage {
 
   employees: Employee[] = [];
+  showModalAdd: boolean = false;
 
   constructor(private employeeService: EmployeeService) {
+    this.refreshEmployees();
+  }
+
+  toggleModalAdd() {
+    this.showModalAdd = !this.showModalAdd;
+  }
+
+  refreshEmployees() {
     this.employeeService.getEmployees().subscribe(
       (data) => {
         this.employees = data;
@@ -22,8 +31,4 @@ export class HomePage {
       }
     );
   }
-
-
-
-
 }
