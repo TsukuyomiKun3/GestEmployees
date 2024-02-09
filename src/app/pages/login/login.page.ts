@@ -24,7 +24,8 @@ export class LoginPage implements OnInit {
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe(
       (user) => {
-        this.router.navigate(['/home'], {queryParams: {user: JSON.stringify(user)}});
+        localStorage.setItem('user', JSON.stringify(user));
+        this.router.navigate(['/home']);
       },
       (error) => {
         console.log(error);

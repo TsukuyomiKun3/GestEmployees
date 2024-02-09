@@ -24,7 +24,7 @@ export class HomePage {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.loggedInUser = JSON.parse(params['user']);
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
     });
   }
 
