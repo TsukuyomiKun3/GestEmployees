@@ -29,6 +29,10 @@ export class AddEmployeeComponent  implements OnInit {
         console.log("OK", data);
         this.refreshEmployees.emit();
         this.closeModal.emit();
+
+        this.firstname = "";
+        this.lastname = "";
+        this.email = "";
       },
       (error) => {
         console.log(error);

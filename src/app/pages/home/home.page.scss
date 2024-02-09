@@ -73,12 +73,23 @@ ion-button {
 }
 
 .employee{
-	border-radius: 10px;
-	--background: #1F2544;
-	--border-color: #1F2544;
+	background: #1F2544;
+	border-bottom: 1px solid #FFD0EC;
+	color: #eee;
+	margin: 10px;
 }
 
-ion-list {
+.employee:last-child {
+	border-bottom: none;
+}
+
+ion-grid {
 	background-color: #1F2544;
+	border-color: #FFD0EC;
+}
+
+.delete-button {
+	--background: red;
+	color: #eee;
 }
 

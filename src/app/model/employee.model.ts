@@ -4,8 +4,8 @@ import { Material } from "./material.model";
 export class Employee implements Deserializable {
     id: number;
     num: number;
-    firstname: string;
-    lastname: string;
+    first_name: string;
+    last_name: string;
     email: string;
     age: number;
     validation: boolean;
@@ -20,8 +20,8 @@ export class Employee implements Deserializable {
     constructor(id: number, num: number, firstname: string, lastname: string, email: string, age: number, validation: boolean, profilImage: string, materialAssigned: Material[]) {
         this.id = id;
         this.num = num;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.first_name = firstname;
+        this.last_name = lastname;
         this.email = email;
         this.age = age;
         this.validation = validation;

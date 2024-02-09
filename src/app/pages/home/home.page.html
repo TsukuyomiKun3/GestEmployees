@@ -17,17 +17,43 @@
       </ion-button>
 
     <ion-card>
-      <ion-list>
-        <ion-item *ngFor="let employee of employees" class="employee">
-          <ion-label>
-            <h2>{{ employee.firstname}}</h2><h2>{{ employee.lastname}}</h2><h2>{{ employee.email}}</h2>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>Prénom</ion-col>
+          <ion-col>Nom</ion-col>
+          <ion-col>Email</ion-col>
+          <ion-col>Modifier</ion-col>
+          <ion-col>Supprimer</ion-col>
+        </ion-row>
+      
+        <ion-row class="employee" *ngFor="let employee of employees">
+
+          <ion-col>{{ employee.first_name }}</ion-col>
+          <ion-col>{{ employee.last_name }}</ion-col>
+          <ion-col>{{ employee.email }}</ion-col>
+
+          <ion-col>
+            <ion-button (click)="setEmployeeToModify(employee)" class="modify-button">
+              Modifier
+            </ion-button>
+          </ion-col>
+ 
+          <ion-col>
+            <ion-button (click)="deleteEmployee(employee.id)" class="delete-button">
+              Supprimer
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
     </ion-card>
 
     <div class="div-modal-add" [hidden]="!showModalAdd">
       <app-add-employee (refreshEmployees)="refreshEmployees()" (closeModal)="toggleModalAdd()"></app-add-employee>
+    </div>
+
+    <div class="div-modal-modify" [hidden]="!showModalModify">
+      <app-modify-employee [employee]="employeeToModify" (closeModal)="toggleModalModify()" (refreshEmployees)="refreshEmployees()"></app-modify-employee>
     </div>
   </ion-content>
 </ion-app>

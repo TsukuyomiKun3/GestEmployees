@@ -10,7 +10,9 @@ import { Employee } from 'src/app/model/employee.model';
 export class HomePage {
 
   employees: Employee[] = [];
+  employeeToModify: Employee = new Employee(0, 0, '', '', '', 0, false, '', []);
   showModalAdd: boolean = false;
+  showModalModify: boolean = false;
 
   constructor(private employeeService: EmployeeService) {
     this.refreshEmployees();
@@ -20,14 +22,34 @@ export class HomePage {
     this.showModalAdd = !this.showModalAdd;
   }
 
+  setEmployeeToModify(employee: Employee) {
+    this.employeeToModify = JSON.parse(JSON.stringify(employee));
+    this.toggleModalModify();
+  }
+
+  toggleModalModify() {
+    this.showModalModify = !this.showModalModify;
+  }
+
   refreshEmployees() {
     this.employeeService.getEmployees().subscribe(
       (data) => {
         this.employees = data;
         console.log(this.employees);
-      },
+     },
       (error) => {
         console.log(error)
+      }
+    );
+  }
+
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe(
+      (data) => {
+        this.refreshEmployees();
+      },
+      (error) => {
+        console.log(error);
       }
     );
   }
