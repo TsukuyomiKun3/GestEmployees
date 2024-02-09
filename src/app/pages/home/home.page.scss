@@ -93,3 +93,37 @@ ion-grid {
 	color: #eee;
 }
 
+.deco-button {
+	--background: red;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+.modify-button {
+	--background: #81689D;
+	color: #eee;
+}
+
+.modal{
+    background-color: #1F2544;
+    border-radius: 10px;
+	padding: 20px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.modal-button-delete {
+	min-width: 50%;
+	width: 50%;
+	background-color: red;
+	margin-top: 10px;
+} 
+
+.modal-button-cancel {
+	min-width: 50%;
+	width: 50%;
+	margin-top: 10px;
+	background-color: #81689D;
+} 

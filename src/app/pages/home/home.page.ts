@@ -12,10 +12,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomePage {
 
   employees: Employee[] = [];
+
   employeeToModify: Employee = new Employee(0, 0, '', '', '', 0, false, '', []);
+  employeeToDelete: number = 0;
   showModalAdd: boolean = false;
   showModalModify: boolean = false;
   loggedInUser!: User;
+  showModalDelete: boolean = false;
 
   constructor(private employeeService: EmployeeService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.refreshEmployees();
@@ -24,7 +27,6 @@ export class HomePage {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.loggedInUser = JSON.parse(params['user']);
-      // this.router.navigate(['/home']);
     });
   }
 
@@ -40,6 +42,15 @@ export class HomePage {
 
   toggleModalModify() {
     this.showModalModify = !this.showModalModify;
+  }
+
+  setEmployeeToDelete(id: number) {
+    this.employeeToDelete = id;
+    this.toggleModalDelete();
+  }
+
+  toggleModalDelete() {
+    this.showModalDelete = !this.showModalDelete;
   }
 
   refreshEmployees() {
@@ -63,5 +74,9 @@ export class HomePage {
         console.log(error);
       }
     );
+
+    if(this.showModalDelete==true) {
+      this.toggleModalDelete();
+    }
   }
 }

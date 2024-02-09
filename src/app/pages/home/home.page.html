@@ -6,9 +6,9 @@
             GestEmployees
           </ion-card-title>
           
-          <ion-label>
-            GestEmployees allows you to manage your employees.
-          </ion-label>
+          <ion-button class="deco-button">
+            Déconnexion
+          </ion-button>
         </div>
       </ion-card-header>
 
@@ -39,7 +39,7 @@
           </ion-col>
  
           <ion-col>
-            <ion-button (click)="deleteEmployee(employee.id)" class="delete-button">
+            <ion-button (click)="setEmployeeToDelete(employee.id)" class="delete-button">
               Supprimer
             </ion-button>
           </ion-col>
@@ -56,4 +56,18 @@
       <app-modify-employee [employee]="employeeToModify" (closeModal)="toggleModalModify()" (refreshEmployees)="refreshEmployees()"></app-modify-employee>
     </div>
   </ion-content>
+
+    <div [hidden]="!showModalDelete"  class="modal">
+        <ion-label class="footer">Voulez-vous vraiment supprimer cet employé ?</ion-label>
+
+        <ion-buttons>
+          <ion-button class="modal-button-delete" (click)="deleteEmployee(employeeToDelete)">
+            Oui
+          </ion-button>
+
+          <ion-button class="modal-button-cancel" (click)="toggleModalDelete()">
+            Non
+          </ion-button>
+        </ion-buttons>
+    </div>
 </ion-app>
