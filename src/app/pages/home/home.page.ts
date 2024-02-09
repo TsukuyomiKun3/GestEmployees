@@ -3,6 +3,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { Employee } from 'src/app/model/employee.model';
 import { User } from 'src/app/model/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomePage {
   loggedInUser!: User;
   showModalDelete: boolean = false;
 
-  constructor(private employeeService: EmployeeService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private employeeService: EmployeeService, private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) {
     this.refreshEmployees();
   }
 
@@ -78,5 +79,9 @@ export class HomePage {
     if(this.showModalDelete==true) {
       this.toggleModalDelete();
     }
+  }
+
+  disconnect() {
+    this.authService.disconnect();
   }
 }
