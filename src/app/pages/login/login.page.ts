@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -13,15 +14,21 @@ export class LoginPage implements OnInit {
   password = '';
   private router: Router;
 
-  constructor(router: Router) {
+  constructor(router: Router, private authService: AuthService) {
     this.router = router;
   }
 
   ngOnInit() {
   }
 
-  login() {
-    console.log('Username: ' + this.username + ' Password: ' + this.password);
-    this.router.navigate(['/home']);
+  onSubmit() {
+    this.authService.login(this.username, this.password).subscribe(
+      (user) => {
+        this.router.navigate(['/home'], {queryParams: {user: JSON.stringify(user)}});
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
