@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.disconnect();
   }
 
   onSubmit() {

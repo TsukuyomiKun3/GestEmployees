@@ -18,18 +18,25 @@ ion-card-header{
 }
 
 ion-card {
-	border-radius: 10px;
-    --background: linear-gradient(to bottom, #474F7A, #81689D, #FFD0EC);
+    --background:#0f0c29;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+}
 
+.employee-searchbar {
+	--background: #81689D;
+	border-radius: 10px;
+	height: 40px;
 }
 
 .button-add {
-	display: flex;
-	margin-bottom: 10px;
+	// display: flex;
+	margin: 10px;
 	--background: #81689D;
-	margin-left: 10px;
-	margin-right: 10px;
 	border-radius: 10px;
+	height: 40px;
 }
 
 
@@ -88,10 +95,26 @@ ion-grid {
 	border-color: #FFD0EC;
 }
 
-.delete-button {
+.text-delete-button {
 	--background: red;
 	color: #eee;
+	flex: 1;
+	margin: 0 5px;
 }
+
+.text-modify-button {
+	--background: #81689D;
+	color: #eee;
+	flex: 1;
+	margin: 0 5px;
+}
+
+.text-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+
 
 .deco-button {
 	--background: red;
@@ -99,10 +122,8 @@ ion-grid {
 	font-weight: bold;
 }
 
-.modify-button {
-	--background: #81689D;
-	color: #eee;
-}
+
+
 
 .modal{
     background-color: #1F2544;
@@ -126,4 +147,92 @@ ion-grid {
 	width: 50%;
 	margin-top: 10px;
 	background-color: #81689D;
-} 
+}
+
+.svg-del-button, .svg-modify-button, .svg-deco-button {
+	display: none;
+}
+
+.employee-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.employee-info > div {
+    flex: 1 0 100%;
+}
+
+@media (max-width: 480px) {
+	.header-content {
+		width: 100%;
+	}
+
+	.hide-phone-size {
+		display: none;
+	}
+
+	.text-delete-button, .text-modify-button, .text-deco-button {
+		display: none;
+	}
+
+	.text-modify-button {
+		display: none;
+	}
+
+	.svg-buttons {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.svg-del-button {
+		display: flex;
+		--background: red;
+		border-radius: 10px;
+		flex: 1;
+		margin: 0 5px;
+	}
+
+	.svg-modify-button {
+		display: flex;
+		border-radius: 10px;
+		--background: #81689D;
+		flex: 1;
+		margin: 0 5px;
+	
+	}
+
+	.svg-deco-button {
+		display: flex;
+		--background: red;
+		border-radius: 10px;
+		font-weight: bold;
+	}
+
+
+	.trash-img {
+		border-radius: 10px;
+		width: 20px;
+		height: 20px;
+	}
+
+	.pen-img {
+		border-radius: 10px;
+		width: 20px;
+		height: 20px;
+	}
+
+	.logout-img {
+		border-radius: 10px;
+		width: 20px;
+		height: 20px;
+	}
+	.employee-info {
+        flex-direction: row;
+    }
+
+    .employee-info > div {
+        flex: 1;
+    }
+}
+

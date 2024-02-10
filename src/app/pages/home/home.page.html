@@ -6,46 +6,66 @@
             GestEmployees
           </ion-card-title>
           
-          <ion-button class="deco-button" (click)="disconnect()">
+          <ion-button class=" text-deco-button" (click)="disconnect()">
             Déconnexion
           </ion-button>
+
+          <ion-button class="svg-deco-button" (click)="disconnect()">
+            <ion-img src="assets/logout-svgrepo-com.svg" class="logout-img"></ion-img>
+          </ion-button>
+
         </div>
       </ion-card-header>
 
-      <ion-button class="button-add" (click)="toggleModalAdd()">
-        + Add an employee
-      </ion-button>
+      <ion-card>
+        <ion-searchbar class="employee-searchbar" [(ngModel)]="employeeToFind" (ionChange)="filterEmployees()" [disabled]="employees.length==0"></ion-searchbar>
+
+        <ion-button class="button-add" (click)="toggleModalAdd()">
+          +
+        </ion-button>
+      </ion-card>
 
     <ion-card>
       <ion-grid>
         <ion-row>
-          <ion-col>Prénom</ion-col>
-          <ion-col>Nom</ion-col>
-          <ion-col>Email</ion-col>
-          <ion-col>Modifier</ion-col>
-          <ion-col>Supprimer</ion-col>
+            <ion-col>Prénom</ion-col>
+            <ion-col>Nom</ion-col>
+            <ion-col>Email</ion-col>
         </ion-row>
+
+
+        <div *ngFor="let employee of filteredEmployees" class="no-employee">
+          <ion-row class="employee" >
+              <ion-col>{{ employee.first_name }}</ion-col>
+              <ion-col>{{ employee.last_name }}</ion-col>
+              <ion-col>{{ employee.email }}</ion-col>
+          </ion-row>
+
+          <ion-row class="employee-info">
+                <div >
+                    <div class="text-buttons">
+                      <ion-button (click)="setEmployeeToModify(employee)" class="text-modify-button">
+                          Modifier
+                      </ion-button>
       
-        <ion-row class="employee" *ngFor="let employee of employees">
+                      <ion-button (click)="setEmployeeToDelete(employee.id)" class="text-delete-button">
+                          Supprimer
+                      </ion-button>
+                    </div>
 
-          <ion-col>{{ employee.first_name }}</ion-col>
-          <ion-col>{{ employee.last_name }}</ion-col>
-          <ion-col>{{ employee.email }}</ion-col>
+                    <div class="svg-buttons">
+                      <ion-button (click)="setEmployeeToModify(employee)" class="svg-modify-button">
+                        <ion-img src="assets/pen-svgrepo-com.svg" class="pen-img"></ion-img>
+                      </ion-button>
 
-          <ion-col>
-            <ion-button (click)="setEmployeeToModify(employee)" class="modify-button">
-              Modifier
-            </ion-button>
-          </ion-col>
- 
-          <ion-col>
-            <ion-button (click)="setEmployeeToDelete(employee.id)" class="delete-button">
-              Supprimer
-            </ion-button>
-          </ion-col>
-
-        </ion-row>
-      </ion-grid>
+                      <ion-button (click)="setEmployeeToDelete(employee.id)" class="svg-del-button">
+                          <ion-img src="assets/trash-can-svgrepo-com.svg" class="trash-img"></ion-img>
+                      </ion-button>
+                    </div>
+                </div>
+          </ion-row>
+        </div>
+    </ion-grid>
     </ion-card>
 
     <div class="div-modal-add" [hidden]="!showModalAdd">

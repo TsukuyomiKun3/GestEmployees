@@ -13,24 +13,27 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomePage {
 
   employees: Employee[] = [];
+  filteredEmployees: Employee[] = []; // Liste des employés filtrés
 
   employeeToModify: Employee = new Employee(0, 0, '', '', '', 0, false, '', []);
   employeeToDelete: number = 0;
+  employeeToFind: string = '';
+
   showModalAdd: boolean = false;
   showModalModify: boolean = false;
-  loggedInUser!: User;
   showModalDelete: boolean = false;
+
+
 
   constructor(private employeeService: EmployeeService, private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) {
     this.refreshEmployees();
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.loggedInUser = JSON.parse(params['user']);
-    });
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['/login']);
+    }
   }
-
 
   toggleModalAdd() {
     this.showModalAdd = !this.showModalAdd;
@@ -59,6 +62,9 @@ export class HomePage {
       (data) => {
         this.employees = data;
         console.log(this.employees);
+        if(this.filterEmployees.length==0) {
+          this.filteredEmployees = [...this.employees];
+        }
      },
       (error) => {
         console.log(error)
@@ -80,6 +86,23 @@ export class HomePage {
       this.toggleModalDelete();
     }
   }
+
+  filterEmployees() {
+    if (this.employeeToFind) {
+        this.filteredEmployees = this.employees.filter(
+            (employee) =>
+                employee.first_name
+                    .toLowerCase()
+                    .includes(this.employeeToFind.toLowerCase()) ||
+                employee.last_name
+                    .toLowerCase()
+                    .includes(this.employeeToFind.toLowerCase())
+        );
+        console.log(this.filteredEmployees);
+    } else {
+        this.filteredEmployees = [...this.employees];
+    }
+}
 
   disconnect() {
     this.authService.disconnect();

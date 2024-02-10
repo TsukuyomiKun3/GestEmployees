@@ -7,13 +7,10 @@ ion-content {
     min-height: 100vh;
     font-family: 'Jost', sans-serif;
     --ion-background-color: linear-gradient(to bottom, #474F7A, #81689D, #FFD0EC);
-    width: 100%;
 }
 
 .main {
-    min-width: 20%;
-    min-height: 40%;
-    max-height: 50%;
+    padding: 10px;
     background: #302b63;
     box-shadow: 5px 20px 50px #000;
     overflow: hidden;
@@ -30,7 +27,7 @@ ion-content {
 
 }
 .co-label {
-    width: 50%;
+    padding: 10px;
     border-radius: 10px;
     padding: 10px;
     background-color: #eee;
@@ -40,8 +37,6 @@ ion-content {
     align-items: center;
 }
 ion-input {
-    max-width: 100%; /* Adjusted width */
-    max-height: 15%; /* Adjusted height */
     background: #e0dede;
     padding: 10px;
     margin-bottom: 5px;
@@ -63,9 +58,9 @@ ion-label {
 
 ion-button {
     min-width: 100%;
-    max-height: 5%;
     margin-top: 20px;
     color: #fff;
+    --background: #573b8a;
     font-weight: bold;
     outline: none;
     border: none;
@@ -79,8 +74,7 @@ ion-button:hover {
 }
 
 .login {
-    width: 90%; /* Adjusted width */
-    min-height: 15%; /* Adjusted height */
+    width: 400px;
     padding: 20px;
     background: #eee;
     border-radius: 10px; /* Adjusted border-radius */
@@ -88,3 +82,8 @@ ion-button:hover {
 
 }
 
+@media screen and (max-width: 600px) {
+    .login {
+        width: 320px;
+    }  
+}
