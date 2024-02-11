@@ -3,11 +3,13 @@
     padding: 10px;
     background-color: #474F7A;
     border-radius: 10px;
-    width: 30%;
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-body {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +67,7 @@ label {
 
 .validated-checkbox {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #FFD0EC;
     color: #474F7A;
@@ -76,10 +78,26 @@ label {
     transition: background-color 0.3s ease;
 }
 
-.validated-checkbox:hover {
-    background-color: #0056b3;
-}
+@media (max-width: 480px) {
+    .modal {
+        width: 260px;
+    }
 
-.validated-checkbox input {
-    size: 20px;
+    input {
+        width: 90%;
+        height: 30px;
+    }
+
+    label {
+        font-size: 15px;
+    }
+
+    .validated-checkbox {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .validated-checkbox input {
+        transform: scale(0.6);
+    }
 }

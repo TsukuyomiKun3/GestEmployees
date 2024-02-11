@@ -116,14 +116,11 @@ ion-grid {
 
 
 
-.deco-button {
+.text-deco-button {
 	--background: red;
 	border-radius: 10px;
 	font-weight: bold;
 }
-
-
-
 
 .modal{
     background-color: #1F2544;
@@ -199,7 +196,6 @@ ion-grid {
 		--background: #81689D;
 		flex: 1;
 		margin: 0 5px;
-	
 	}
 
 	.svg-deco-button {
@@ -234,5 +230,15 @@ ion-grid {
     .employee-info > div {
         flex: 1;
     }
+}
+
+@media (max-width: 767px) {
+	.header-content {
+		width: 100%;
+	}
+
+	.hide-phone-size {
+		display: none;
+	}
 }
 
