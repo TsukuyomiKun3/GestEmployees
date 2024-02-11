@@ -8,22 +8,22 @@
         <div class="modal-body">
           <form id="addPersonForm" (ngSubmit)="onSubmit()">
 
-            <label for="firstName">Prénom :</label>
+            <label for="firstName">Firstname :</label>
             <div class="form-group">
               <input type="text" class="form-control" id="firstName" name="first_name" [(ngModel)]="firstname" required>
             </div>
 
-            <label for="lastName">Nom :</label>
+            <label for="lastName">Lastname :</label>
             <div class="form-group">
               <input type="text" class="form-control" id="lastName" name="last_name" [(ngModel)]="lastname" required>
             </div>
 
             <label for="email">Email :</label>
             <div class="form-group">
-              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
             </div>
 
-            <label for="num">Numéro :</label>
+            <label for="num">Phone :</label>
             <div class="form-group">
               <input type="number" class="form-control" id="num" name="num" [(ngModel)]="num" required>
             </div>
@@ -39,14 +39,14 @@
               <section>
                   <label class="validated-checkbox" for="validated-checkbox">
                     <input type="checkbox" id="validated-checkbox" name="validated" [(ngModel)]="validated"/>
-                    <span class="button-label">Valider l'employé</span>
+                    <span class="button-label">Validate employee</span>
                   </label>
               </section>
             </div>
 
             <div class="buttons">
-              <button type="submit" class="btn btn-primary">Valider</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close()">Fermer</button>
+              <button type="submit" class="btn btn-primary">Confirm</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close()">Cancel</button>
             </div>
           </form>
         </div>

@@ -7,7 +7,7 @@
           </ion-card-title>
           
           <ion-button class=" text-deco-button" (click)="disconnect()">
-            Déconnexion
+            Logout
           </ion-button>
 
           <ion-button class="svg-deco-button" (click)="disconnect()">
@@ -28,8 +28,8 @@
     <ion-card>
       <ion-grid>
         <ion-row>
-            <ion-col>Prénom</ion-col>
-            <ion-col>Nom</ion-col>
+            <ion-col>Firstname</ion-col>
+            <ion-col>Lastname</ion-col>
             <ion-col>Email</ion-col>
         </ion-row>
 
@@ -45,11 +45,11 @@
                 <div >
                     <div class="text-buttons">
                       <ion-button (click)="setEmployeeToModify(employee)" class="text-modify-button">
-                          Modifier
+                          Modify
                       </ion-button>
       
                       <ion-button (click)="setEmployeeToDelete(employee.id)" class="text-delete-button">
-                          Supprimer
+                          Delete
                       </ion-button>
                     </div>
 
@@ -69,24 +69,24 @@
     </ion-card>
 
     <div class="div-modal-add" [hidden]="!showModalAdd">
-      <app-add-employee (refreshEmployees)="refreshEmployees()" (closeModal)="toggleModalAdd()"></app-add-employee>
+      <app-add-employee [employees]="employees" (refreshEmployees)="refreshEmployees()" (closeModal)="toggleModalAdd()"></app-add-employee>
     </div>
 
     <div class="div-modal-modify" [hidden]="!showModalModify">
-      <app-modify-employee [employee]="employeeToModify" (closeModal)="toggleModalModify()" (refreshEmployees)="refreshEmployees()"></app-modify-employee>
+      <app-modify-employee [employee]="employeeToModify" [employees]="employees" (closeModal)="toggleModalModify()" (refreshEmployees)="refreshEmployees()"></app-modify-employee>
     </div>
   </ion-content>
 
     <div [hidden]="!showModalDelete"  class="modal">
-        <ion-label class="footer">Voulez-vous vraiment supprimer cet employé ?</ion-label>
+        <ion-label class="footer">Are you sure you want to delete this employee ?</ion-label>
 
         <ion-buttons>
           <ion-button class="modal-button-delete" (click)="deleteEmployee(employeeToDelete)">
-            Oui
+            Yes
           </ion-button>
 
           <ion-button class="modal-button-cancel" (click)="toggleModalDelete()">
-            Non
+            No
           </ion-button>
         </ion-buttons>
     </div>

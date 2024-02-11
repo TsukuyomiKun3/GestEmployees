@@ -13,6 +13,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class ModifyEmployeeComponent  implements OnInit {
 
   @Input() employee!: Employee;
+  @Input() employees!: Employee[];
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
   @Output() refreshEmployees: EventEmitter<void> = new EventEmitter();
 
@@ -49,19 +50,39 @@ export class ModifyEmployeeComponent  implements OnInit {
   }
 
   onSubmit() {
-    this.resetEmployee();
-    this.employeeService.updateEmployee(this.employee).subscribe(
-      (data) => {
-        this.close();
-        console.log("data",data);
-        this.refreshEmployees.emit();
+    if (this.firstname == '' && this.lastname == '') {
+      alert('You cannot have an empty first and last name!');
+    } else if (this.age < 0 || this.age > 100) {
+      alert('The age must be between 0 and 100 !');
+    } else if (this.email == ''){
+      alert('The email cannot be empty !');
+    } else if (this.email !== this.employee.email && this.employees.filter(e => e.email == this.email).length > 0) {
+      alert('The email already exists in the database !');
+    } else if (!this.isEmailFormat(this.email)) {
+      alert('The email is not valid !');
+    } else {
+      this.resetEmployee();
+      this.employeeService.updateEmployee(this.employee).subscribe(
+        (data) => {
+          this.close();
+          console.log("data",data);
+          this.refreshEmployees.emit();
 
-      },
-      (error) => {
-        console.log(error);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
       }
-    );
 
+  }
+
+  isEmailFormat(input: string): boolean {
+    // Expression régulière pour vérifier le format de l'adresse e-mail
+    const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    // Vérifie si la chaîne correspond à l'expression régulière
+    return emailRegex.test(input);
   }
 
   close() {
