@@ -51,15 +51,17 @@ export class ModifyEmployeeComponent  implements OnInit {
 
   onSubmit() {
     if (this.firstname == '' && this.lastname == '') {
-      alert('You cannot have an empty first and last name!');
+      alert('You cannot have an empty first and last name');
     } else if (this.age < 0 || this.age > 100) {
-      alert('The age must be between 0 and 100 !');
+      alert('The age must be between 0 and 100');
     } else if (this.email == ''){
-      alert('The email cannot be empty !');
+      alert('The email cannot be empty');
     } else if (this.email !== this.employee.email && this.employees.filter(e => e.email == this.email).length > 0) {
-      alert('The email already exists in the database !');
+      alert('The email already exists in the database');
     } else if (!this.isEmailFormat(this.email)) {
       alert('The email is not valid !');
+    } else if (!this.isValidNumber(this.num)){
+      alert('The phone number must be a 10 digit number or you should put 0 if you don\'t want to add any'); 
     } else {
       this.resetEmployee();
       this.employeeService.updateEmployee(this.employee).subscribe(
@@ -85,16 +87,29 @@ export class ModifyEmployeeComponent  implements OnInit {
     return emailRegex.test(input);
   }
 
+  isValidNumber(num: any): boolean {
+    if (num === 0) {
+      return true;
+    }
+  
+    const numAsString = String(num);
+    const regex = /^\d{10}$/;
+  
+    return regex.test(numAsString);
+  }
+
   close() {
     this.closeModal.emit();
   }
+
+
 
   resetEmployee() {
     this.employee.num = this.num;
     this.employee.first_name = this.firstname;
     this.employee.last_name = this.lastname;
     this.employee.email = this.email;
-    this.employee.age = this.age;
+    this.employee.age = parseFloat(this.age.toFixed(0));
     this.employee.validation = this.validated;
   }
 
